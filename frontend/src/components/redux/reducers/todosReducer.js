@@ -7,9 +7,20 @@ const todosReducers = (state = [], action) => {
     case actionTypes.GETALL_TODO:
       return action.payload;
     case actionTypes.TOGGLE_TODO:
-      return state.map((todo) =>
-        todo._id === action.payload._id ? { ...todo, done: !todo.done } : todo
+      return state.map((todos) =>
+        todos._id === action.payload._id
+          ? { ...todos, done: !todos.done }
+          : todos
       );
+    case actionTypes.UPDATE_TODO:
+      return state.map((todos) =>
+        todos._id === action.payload._id
+          ? { ...todos, data: action.payload.data }
+          : todos
+      );
+    case actionTypes.DELETE_TODO:
+      return state.filter((todos) => todos._id !== action.payload._id);
+
     default:
       return state;
   }

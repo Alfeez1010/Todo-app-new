@@ -4,7 +4,6 @@ import { getAllTodos } from './redux/actions/index';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TodoComp from './TodoComp';
-import bodyParser from 'body-parser';
 
 const Todos = () => {
   const dispatch = useDispatch();
