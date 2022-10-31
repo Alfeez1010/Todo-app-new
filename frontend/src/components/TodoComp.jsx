@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, toggleTodo, updateTodo } from './redux/actions';
 import React from 'react';
+
 const TodoComp = ({ todos }) => {
   const [editing, setEditing] = useState(false);
   const [text, setText] = useState(todos.data);
