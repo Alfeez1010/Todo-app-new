@@ -22,25 +22,24 @@ function Header() {
           <Navbar.Brand
             href="#home"
             style={{
-              color: 'red',
+              color: '#ddede1',
               fontFamily: 'Helvetica',
               fontSize: 25,
               marginLeft: -50,
+              fontWeight: 'bold',
             }}
           >
-            ToDo-App
+            TODO LIST
           </Navbar.Brand>
           <div>
-            <Dropdown>
-              <Dropdown.Toggle variant="danger" color="red" id="dropdown-basic">
-                Dropdown Button
+            <Dropdown sx={{ BackgroundColor: '#ddede1', color: 'red' }}>
+              <Dropdown.Toggle
+                variant="danger"
+                BackgroundColor="#ddede1"
+                id="dropdown-basic"
+              >
+                Menu
               </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">favorite</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-              </Dropdown.Menu>
             </Dropdown>
           </div>
         </Container>
