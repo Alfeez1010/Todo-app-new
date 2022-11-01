@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { deleteTodo, toggleTodo, updateTodo } from './redux/actions';
 import React from 'react';
 import DeleteIcon from './deleteIcon';
+import './deleteIcon.css';
 
 const TodoComp = ({ todos }) => {
   const [editing, setEditing] = useState(false);
@@ -37,22 +38,64 @@ const TodoComp = ({ todos }) => {
         <span style={{ display: editing ? 'none' : '' }}>{todos?.data}</span>
 
         <form
-          style={{ display: editing ? 'inline' : 'none' }}
+          style={{
+            display: editing ? 'inline' : 'none',
+            width: '300',
+            height: '300',
+            backgroundColor: '#fffff',
+          }}
           onSubmit={onFormSubmit}
         >
-          <input
-            type="text"
-            value={text}
-            className="edit-todo"
-            onChange={(e) => setText(e.target.value)}
-          />
+          <div
+            style={{
+              width: '300px',
+              height: '90px',
+              backgroundColor: '#ddede1',
+              borderRadius: ' 12px',
+              border: ' black 2px',
+              borderStyle: 'outset',
+            }}
+          >
+            <input
+              style={{
+                marginTop: 'none',
+                width: '100%',
+                height: '50px',
+                backgroundColor: '#ddede1',
+                marginleft: '170px',
+
+                borderRadius: ' 12px',
+                border: ' black 2px',
+                color: 'black',
+                borderStyle: 'outset',
+              }}
+              type="text"
+              value={text}
+              className="edit-todo"
+              onChange={(e) => setText(e.target.value)}
+            />
+            <div className="footer-style">
+              <button
+                className="button-edit"
+                onClick={() => {
+                  setConfirm(false);
+                }}
+                id="cancelBtn"
+              >
+                Cancel
+              </button>
+
+              <button className="button-edit" onClick={{ onFormSubmit }}>
+                Edit
+              </button>
+            </div>
+          </div>
         </form>
         <span
           className="icon"
           onClick={() => {
             setConfirm(true);
           }}
-          // onClick={() => dispatch(deleteTodo(todos._id))}
         >
           <i className="fas fa-trash" />
         </span>

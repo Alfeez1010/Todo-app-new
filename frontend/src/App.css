@@ -95,8 +95,35 @@ article {
 }
 
 .button.clear {
+
+
+
   float: right;
   color: white;
   background-color: red;
   width: 160px;
+}
+
+.footer-style {
+  width: 100%;
+  cursor: pointer;
+  margin: 1px;
+  display: flex;
+  font-size: 16px;
+  color: #282c34;
+  gap: -50px;
+}
+
+.button-edit {
+  background-color: rgb(109, 109, 237);
+  color: white;
+  width: 120px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  margin: 1px;
+  margin-left: 20px;
+  border-radius: 6px;
+
+
 }
