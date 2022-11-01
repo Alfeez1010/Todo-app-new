@@ -2,28 +2,13 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, toggleTodo, updateTodo } from './redux/actions';
 import React from 'react';
-import Box from '@mui/material/Box';
+import DeleteIcon from './deleteIcon';
 
 const TodoComp = ({ todos }) => {
   const [editing, setEditing] = useState(false);
   const [text, setText] = useState(todos.data);
 
   const dispatch = useDispatch();
-  const deleteIcon = () => {
-    <Box
-      sx={{
-        width: 300,
-        height: 300,
-        backgroundColor: 'primary.dark',
-        '&:hover': {
-          backgroundColor: 'primary.main',
-          opacity: [0.9, 0.8, 0.7],
-        },
-      }}
-    >
-      console.log('object');
-    </Box>;
-  };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -31,46 +16,56 @@ const TodoComp = ({ todos }) => {
     dispatch(updateTodo(todos._id, text));
   };
 
-  return (
-    <li
-      className="task"
-      onClick={() => dispatch(toggleTodo(todos._id))}
-      style={{
-        textDecoration: todos?.done ? 'line-through' : '',
-        color: todos?.done ? '#bdc3c7' : '#34495e',
-      }}
-      data-testid="todos-test"
-    >
-      <span style={{ display: editing ? 'none' : '' }}>{todos?.data}</span>
+  const [confirm, setConfirm] = useState(false);
 
-      <form
-        style={{ display: editing ? 'inline' : 'none' }}
-        onSubmit={onFormSubmit}
+  return (
+    <div>
+      <div>
+        {confirm && (
+          <DeleteIcon setConfirm={setConfirm} todos={todos} key={todos._id} />
+        )}
+      </div>
+      <li
+        className="task"
+        onClick={() => dispatch(toggleTodo(todos._id))}
+        style={{
+          textDecoration: todos?.done ? 'line-through' : '',
+          color: todos?.done ? '#bdc3c7' : '#34495e',
+        }}
+        data-testid="todos-test"
       >
-        <input
-          type="text"
-          value={text}
-          className="edit-todo"
-          onChange={(e) => setText(e.target.value)}
-        />
-      </form>
-      <span
-        className="icon"
-        //  onClick={() => dispatch(deleteTodo(todos._id))}
-      >
-        <button>
+        <span style={{ display: editing ? 'none' : '' }}>{todos?.data}</span>
+
+        <form
+          style={{ display: editing ? 'inline' : 'none' }}
+          onSubmit={onFormSubmit}
+        >
+          <input
+            type="text"
+            value={text}
+            className="edit-todo"
+            onChange={(e) => setText(e.target.value)}
+          />
+        </form>
+        <span
+          className="icon"
+          onClick={() => {
+            setConfirm(true);
+          }}
+          // onClick={() => dispatch(deleteTodo(todos._id))}
+        >
           <i className="fas fa-trash" />
-        </button>
-      </span>
-      <span
-        className="icon"
-        onClick={() => setEditing((prevState) => !prevState)}
-      >
-        <button>
-          <i className="fas fa-pen" />
-        </button>
-      </span>
-    </li>
+        </span>
+        <span
+          className="icon"
+          onClick={() => setEditing((prevState) => !prevState)}
+        >
+          <button>
+            <i className="fas fa-pen" />
+          </button>
+        </span>
+      </li>
+    </div>
   );
 };
 

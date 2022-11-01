@@ -1,0 +1,47 @@
+.modalContainer {
+    margin-top: 10px;
+    margin-left: 170px;
+    width: 250px;
+    height: 100px;
+    border-radius: 12px;
+    border: black 2px;
+    border-style: outset;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalContainer .title {
+    display: inline-block;
+    text-align: center;
+}
+
+.titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+.modalContainer .footer {
+    flex: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContainer .footer button {
+    width: 100px;
+    height: 25px;
+    margin: 10px;
+    border: none;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#cancelBtn {
+    background-color: crimson;
+}

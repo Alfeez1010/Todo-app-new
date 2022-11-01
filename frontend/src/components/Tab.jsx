@@ -5,8 +5,9 @@ import { toggleTab } from './redux/actions';
 const Tabs = ({ currentTab }) => {
   const dispatch = useDispatch();
 
-  return TABS.map((tab) => (
+  return TABS.map((tab, index) => (
     <button
+      key={index}
       className={tab === currentTab ? 'button-selected' : 'button'}
       onClick={() => dispatch(toggleTab(tab))}
     >
